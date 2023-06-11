@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PipeMove : MonoBehaviour
 {
-
-    public float moveSpeed = 3;
+    public float moveSpeed = 2;
+    public float destroyZone = -11.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,5 +17,10 @@ public class PipeMove : MonoBehaviour
     {
         transform.position = transform.position + (Vector3.left * moveSpeed) * Time.deltaTime;
         // Time.deltaTime ensures that multiplication happens the same no matter the frame rate
+
+        if (transform.position.x < destroyZone)
+        {
+            Destroy(gameObject);
+        }
     }
 }
